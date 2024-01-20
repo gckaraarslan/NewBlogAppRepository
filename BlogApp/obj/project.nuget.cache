@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L9/6L4uk51cKuP2e8pEv7PcRcP8Zi6k0fMFXYTUOMXIs0SxeOAFVegvRoTSukNipkKzbFmcWopdRZGugYHFZNw==",
+  "dgSpecHash": "cKvdLxYPvBb91FYSr3sBiG1KI8LXvkJWV4UKSlUaaZwAv+LtpX73jVVbJ3ik5+MnByjJFy5vlmchn0m4BmB9bQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\NewBlogApp\\BlogApp\\BlogApp.csproj",
+  "projectFilePath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gckar\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.10\\microsoft.data.sqlite.core.7.0.10.nupkg.sha512",
     "C:\\Users\\gckar\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
