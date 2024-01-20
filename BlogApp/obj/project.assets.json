@@ -1144,11 +1144,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\NewBlogApp\\blogapp\\BlogApp.csproj",
+      "projectUniqueName": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
       "projectName": "BlogApp",
-      "projectPath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\NewBlogApp\\blogapp\\BlogApp.csproj",
+      "projectPath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
       "packagesPath": "C:\\Users\\gckar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\NewBlogApp\\blogapp\\obj\\",
+      "outputPath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gckar\\AppData\\Roaming\\NuGet\\NuGet.Config",
