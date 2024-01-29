@@ -62,3 +62,5 @@ C:\Users\gckar\OneDrive\Masaüstü\Git\NewBlogAppRepository\BlogApp\obj\Debug\ne
 C:\Users\gckar\OneDrive\Masaüstü\Git\NewBlogAppRepository\BlogApp\obj\Debug\net8.0\BlogApp.pdb
 C:\Users\gckar\OneDrive\Masaüstü\Git\NewBlogAppRepository\BlogApp\obj\Debug\net8.0\BlogApp.genruntimeconfig.cache
 C:\Users\gckar\OneDrive\Masaüstü\Git\NewBlogAppRepository\BlogApp\obj\Debug\net8.0\ref\BlogApp.dll
+C:\Users\gckar\OneDrive\Masaüstü\Git\NewBlogAppRepository\BlogApp\obj\Debug\net8.0\BlogApp.RazorAssemblyInfo.cache
+C:\Users\gckar\OneDrive\Masaüstü\Git\NewBlogAppRepository\BlogApp\obj\Debug\net8.0\BlogApp.RazorAssemblyInfo.cs

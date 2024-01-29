@@ -38,7 +38,7 @@ namespace BlogApp.Data.Concrete.EfCore
                     context.SaveChanges();
                 }
 
-                if(context.Posts.Any())
+                if(!context.Posts.Any())
                 {
                     context.Posts.AddRange(
                         new Post{
