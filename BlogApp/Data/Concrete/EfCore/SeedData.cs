@@ -47,6 +47,7 @@ namespace BlogApp.Data.Concrete.EfCore
                             IsActive=true,
                             PublishedOn=DateTime.Now.AddDays(-10),
                             Tags=context.Tags.Take(3).ToList(),
+                            Image="1.jpg",
                             UserId=1
                         },
                                new Post{
@@ -55,14 +56,16 @@ namespace BlogApp.Data.Concrete.EfCore
                             IsActive=true,
                             PublishedOn=DateTime.Now.AddDays(-20),
                             Tags=context.Tags.Take(2).ToList(),
+                            Image="3.jpg",
                             UserId=1
                         },
                                new Post{
-                            Title="Django",
-                            Content="Django Dersleri",
+                            Title="java",
+                            Content="java Dersleri",
                             IsActive=true,
                             PublishedOn=DateTime.Now.AddDays(-30),
                             Tags=context.Tags.Take(1).ToList(),
+                             Image="2.jpg",
                             UserId=2
                         }
                        
