@@ -11,6 +11,7 @@ builder.Services.AddDbContext<BlogContext>(options=>{
     //options.UseSqlite(builder.Configuration["ConnectionStrings:sql_connection"]); // instead of 6,7 and 8th lines...
 });
 builder.Services.AddScoped<IPostRepository,EfPostRepository>();
+builder.Services.AddScoped<ITagRepository,EfTagRepository>();
 var app = builder.Build();
 app.UseStaticFiles();
 
