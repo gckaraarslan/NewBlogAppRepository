@@ -25,6 +25,11 @@ app.MapControllerRoute(
     pattern:"posts/{url}",
     defaults:new {controller="Posts", action="Details"}
 );
+app.MapControllerRoute(
+    name:"posts_by_tag",
+    pattern:"posts/tag/{tagName}",
+    defaults:new {controller="Posts", action="Index"}
+);
 
 app.MapControllerRoute(
     name:"default",
