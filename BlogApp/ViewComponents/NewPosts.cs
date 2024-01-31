@@ -8,18 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.ViewComponents
 {
-    public class TagsMenu:ViewComponent
+    public class NewPosts:ViewComponent
     {
-        private ITagRepository _tagRepository;
+        private IPostRepository _postRepository;
 
-        public TagsMenu(ITagRepository tagRepository)
+        public NewPosts(IPostRepository postRepository)
         {
-            _tagRepository=tagRepository;
+            _postRepository=postRepository;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(await _tagRepository.Tags.ToListAsync());
+            return View(await _postRepository.Posts.OrderByDescending(p=>p.PublishedOn).Take(5).ToListAsync());
         }
     }
 }
