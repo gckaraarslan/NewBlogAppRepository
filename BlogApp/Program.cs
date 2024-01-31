@@ -18,7 +18,18 @@ app.UseStaticFiles();
 SeedData.TestVerileriniDoldur(app);
 
 //app.MapGet("/", () => "Hello World!"); //instead of this, we'r gonna use default route...
-app.MapDefaultControllerRoute();
+//app.MapDefaultControllerRoute();  
+
+app.MapControllerRoute(
+    name:"post_details",
+    pattern:"posts/{url}",
+    defaults:new {controller="Posts", action="Details"}
+);
+
+app.MapControllerRoute(
+    name:"default",
+    pattern:"{controller=Home}/{action=Index}/{id?}"
+);
 
 app.Run();
 //branch test
