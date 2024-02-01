@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj": {}
+    "c:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj": {
+    "c:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
+        "projectUniqueName": "c:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
         "projectName": "BlogApp",
-        "projectPath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
+        "projectPath": "c:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
         "packagesPath": "C:\\Users\\gckar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\obj\\",
+        "outputPath": "c:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gckar\\AppData\\Roaming\\NuGet\\NuGet.Config",

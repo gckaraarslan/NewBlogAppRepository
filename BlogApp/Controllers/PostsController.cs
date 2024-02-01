@@ -10,32 +10,39 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.Controllers
 {
-    public class PostsController:Controller
+    public class PostsController : Controller
     {
         private IPostRepository _postRepository;
-        
-        public PostsController(IPostRepository postRepository )
+
+        public PostsController(IPostRepository postRepository)
         {
-            _postRepository=postRepository;
-            
+            _postRepository = postRepository;
+
         }
         public async Task<IActionResult> Index(string tagName)
         {
-            var posts=_postRepository.Posts;
-            if(!string.IsNullOrEmpty(tagName))
+            var posts = _postRepository.Posts;
+            if (!string.IsNullOrEmpty(tagName))
             {
-                posts=posts.Where(x=>x.Tags.Any(t=>t.Url==tagName));
+                posts = posts.Where(x => x.Tags.Any(t => t.Url == tagName));
             }
-            return View(new PostViewModel{
-                Posts= await posts.ToListAsync()
-            });  
+            return View(new PostViewModel
+            {
+                Posts = await posts.ToListAsync()
+            });
         }
 
 
 
         public async Task<IActionResult> Details(string url)
         {
-            return View(await _postRepository.Posts.Include(x=>x.Tags).Include(x=>x.Comments).ThenInclude(x=>x.User).FirstOrDefaultAsync(p=>p.Url==url));
+            return View(await _postRepository.Posts.Include(x => x.Tags).Include(x => x.Comments).ThenInclude(x => x.User).FirstOrDefaultAsync(p => p.Url == url));
+        }
+
+
+        public IActionResult AddComment(int PostId, string UserName, string Text)
+        {
+            return View();
         }
     }
 }

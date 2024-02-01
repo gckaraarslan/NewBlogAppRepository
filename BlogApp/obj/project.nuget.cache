@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z1AR/Ou+FBlIrOQQTHtc6vK7xkVf6w5HSl/aTGRVxwswSDtLfv5oD3nGXAgnfNDfR5dp8/2vyG4uFBX5f+E8SA==",
+  "dgSpecHash": "qKXNzRmIR4RMcF7QzuAbRJeQYyhjlAUFhiIsp+9Z7qEt4j2AmEYxEVsz9lgmarnuEZJEJfEs/38GSmh4sirZ5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
+  "projectFilePath": "c:\\Users\\gckar\\OneDrive\\Masaüstü\\Git\\NewBlogAppRepository\\BlogApp\\BlogApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gckar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\gckar\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.10\\microsoft.data.sqlite.core.7.0.10.nupkg.sha512",

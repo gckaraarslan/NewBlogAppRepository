@@ -41,6 +41,24 @@
                         </div>
                         
                     }
+                    <hr class="my-4">
+                    <div>
+                        <h4 class="mb-3">Yorum Ekle</h4>
+                        <form action="/post/AddComment" method="post">
+                        <input type="hidden" name="PostId" value="@Model.PostId">
+                        <div class="col-md-12">
+                            <label for="UserName" class="form-label fw-bold">UserName</label>
+                            <input type="text" name="UserName" id="UserName" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="Text" class="form-label fw-bold">Yorum</label>
+                            <textarea type="text" name="UserName" id="UserName" class="form-control "></textarea>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                        </form>
+                    </div>
                 </div>
             </div>
            </div>
