@@ -29,11 +29,11 @@
                             <img src="/img/@comment.User.Image" alt="" class="avatar rounded-circle float-start me-3">
                            </div> 
                            <div>
-                                <div class="mb-2">
-                                <h6>@comment.User.UserName</h6>                             
-                                 <p>@comment.Text</p>                                 
+                                <div class="mb-2 d-flex">
+                                <h6>@comment.User.UserName</h6>                                                           
                                 <span>@comment.PublishedOn</span>                     
                             </div>
+                              <p>@comment.Text</p>   
                            </div>
                             
                            
@@ -44,15 +44,15 @@
                     <hr class="my-4">
                     <div>
                         <h4 class="mb-3">Yorum Ekle</h4>
-                        <form action="/post/AddComment" method="post">
-                        <input type="hidden" name="PostId" value="@Model.PostId">
+                        <form action="/posts/AddComment" method="post">
+                        <input type="hidden" id="PostId" name="PostId" value="@Model.PostId">
                         <div class="col-md-12">
                             <label for="UserName" class="form-label fw-bold">UserName</label>
                             <input type="text" name="UserName" id="UserName" class="form-control">
                         </div>
                         <div class="col-md-12">
                             <label for="Text" class="form-label fw-bold">Yorum</label>
-                            <textarea type="text" name="UserName" id="UserName" class="form-control "></textarea>
+                            <textarea type="text" name="Text" id="Text"  rows="3" class="form-control "></textarea>
                         </div>
                         <div class="col-md-12 mt-3">
                             <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -70,3 +70,28 @@
         <vc:new-posts></vc:new-posts>
     </div>
 </div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#btnYorumKayit").click(function()
+        {
+            $.ajax({
+                type:'POST',
+                url:'@Url.Action("AddComment")',
+                dataType:'json',
+                data:{
+                    PostId: $('#PostId').val(),
+                    UserName:$('#UserName').val(),
+                    Text:$('#Text').val()
+                },
+                success:function(yorum){
+                    console.log(yorum);
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+}
