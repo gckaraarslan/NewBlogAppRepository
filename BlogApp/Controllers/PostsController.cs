@@ -43,7 +43,7 @@ namespace BlogApp.Controllers
         }
 
     [HttpPost]
-        public IActionResult AddComment(int PostId, string UserName, string Text)
+        public IActionResult AddComment(int PostId, string UserName, string Text,string Url)
         {
             var entity=new Comment{
                 Text=Text,
@@ -53,9 +53,10 @@ namespace BlogApp.Controllers
             };
             _commentRepository.CreateComment(entity);
          // return Redirect("/posts/details/"+Url);
-         // return RedirectToRoute("post_details",new{url=Url});
+          return RedirectToRoute("post_details",new{url=Url});
 
-         return Json(new {UserName,Text,entity.PublishedOn,entity.User.Image});
+         //return Json(new {UserName,Text,entity.PublishedOn,entity.User.Image});
+         
 
         }
     }
