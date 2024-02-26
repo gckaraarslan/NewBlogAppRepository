@@ -49,6 +49,7 @@ namespace BlogApp.Controllers
                     userClaims.Add(new Claim(ClaimTypes.NameIdentifier,isUser.UserId.ToString()));
                     userClaims.Add(new Claim(ClaimTypes.Name,isUser.UserName ?? ""));
                       userClaims.Add(new Claim(ClaimTypes.GivenName,isUser.Name ?? ""));
+                         userClaims.Add(new Claim(ClaimTypes.UserData,isUser.Image ?? ""));
 
                       if(isUser.Email=="gckaraarslan@gmail.com")
                       {
@@ -63,7 +64,7 @@ namespace BlogApp.Controllers
 
                       await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                       await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity),authProperties);
-                      return RedirectToAction("Index","Post");
+                      return RedirectToAction("Index","Posts");
                 }
                 else
                 {
