@@ -43,6 +43,7 @@ namespace BlogApp.Data.Concrete.EfCore
                     context.Posts.AddRange(
                         new Post{
                             Title="Asp.net core",
+                             Description="Asp.net core",
                             Content="Asp.net Core Dersleri",
                             Url="aspnet-core",
                             IsActive=true,
@@ -58,6 +59,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         },
                                new Post{
                             Title="php",
+                             Description="php ders tanımı",
                             Content="php  Dersleri",
                              Url="php",
                             IsActive=true,
@@ -68,6 +70,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         },
                                new Post{
                             Title="java",
+                             Description="java ders tanımı",
                             Content="java Dersleri",
                              Url="java",
                             IsActive=true,
@@ -79,6 +82,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         ,
                                new Post{
                             Title="react",
+                             Description="react ders tanımı",
                             Content="raect Dersleri",
                              Url="react",
                             IsActive=true,
@@ -90,6 +94,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         ,
                                new Post{
                             Title="c++",
+                             Description="c++ ders tanımı",
                             Content="c++ Dersleri",
                              Url="c++",
                             IsActive=true,
