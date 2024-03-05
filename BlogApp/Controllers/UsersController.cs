@@ -19,50 +19,51 @@ namespace BlogApp.Controllers
         private readonly IUserRepository _userRepository;
         public UsersController(IUserRepository userRepository)
         {
-             _userRepository=userRepository;
+            _userRepository = userRepository;
         }
         public IActionResult Login()
         {
-            if(User.Identity!.IsAuthenticated)
+            if (User.Identity!.IsAuthenticated)
             {
-                return RedirectToAction("Index","Posts");
+                return RedirectToAction("Index", "Posts");
             }
             return View();
         }
-         public IActionResult Register()
+        public IActionResult Register()
         {
-         
+
             return View();
         }
 
         [HttpPost]
-         public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-         if(ModelState.IsValid)
-         {
-            var user=await _userRepository.Users.FirstOrDefaultAsync(x=>x.UserName==model.UserName || x.Email==model.Email);
-            if(user==null)
+            if (ModelState.IsValid)
             {
-                _userRepository.CreateUser(new User{
-                    UserName=model.UserName,
-                    Name=model.Name,
-                    Email=model.Email,
-                    Password=model.Password,
-                    Image="avatar.jpg"
-                });
+                var user = await _userRepository.Users.FirstOrDefaultAsync(x => x.UserName == model.UserName || x.Email == model.Email);
+                if (user == null)
+                {
+                    _userRepository.CreateUser(new User
+                    {
+                        UserName = model.UserName,
+                        Name = model.Name,
+                        Email = model.Email,
+                        Password = model.Password,
+                        Image = "avatar.jpg"
+                    });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Username veya Email kullanımda.");
+                }
+                return RedirectToAction("Login");
             }
-            else
-            {
-                ModelState.AddModelError("","Username veya Email kullanımda.");
-            }
-            return RedirectToAction("Login");
-         }
             return View(model);
         }
 
-            public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout()
         {
-                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
 
@@ -70,40 +71,60 @@ namespace BlogApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var isUser=_userRepository.Users.FirstOrDefault(x=>x.Email==model.Email&&x.Password==model.Password);
-                if(isUser!=null)
+                var isUser = _userRepository.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
+                if (isUser != null)
                 {
-                    var userClaims=new List<Claim>();
-                    userClaims.Add(new Claim(ClaimTypes.NameIdentifier,isUser.UserId.ToString()));
-                    userClaims.Add(new Claim(ClaimTypes.Name,isUser.UserName ?? ""));
-                      userClaims.Add(new Claim(ClaimTypes.GivenName,isUser.Name ?? ""));
-                         userClaims.Add(new Claim(ClaimTypes.UserData,isUser.Image ?? ""));
+                    var userClaims = new List<Claim>();
+                    userClaims.Add(new Claim(ClaimTypes.NameIdentifier, isUser.UserId.ToString()));
+                    userClaims.Add(new Claim(ClaimTypes.Name, isUser.UserName ?? ""));
+                    userClaims.Add(new Claim(ClaimTypes.GivenName, isUser.Name ?? ""));
+                    userClaims.Add(new Claim(ClaimTypes.UserData, isUser.Image ?? ""));
 
-                      if(isUser.Email=="gckaraarslan@gmail.com")
-                      {
+                    if (isUser.Email == "gckaraarslan@gmail.com")
+                    {
                         userClaims.Add(new Claim(ClaimTypes.Role, "admin"));
-                      }
+                    }
 
-                      var claimsIdentity=new ClaimsIdentity(userClaims,CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsIdentity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                      var authProperties=new AuthenticationProperties{
-                        IsPersistent=true
-                      };
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true
+                    };
 
-                      await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                      await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity),authProperties);
-                      return RedirectToAction("Index","Posts");
+                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+                    return RedirectToAction("Index", "Posts");
                 }
                 else
                 {
-                    ModelState.AddModelError("","Kullanıcı adıveya şifre yanlış");
+                    ModelState.AddModelError("", "Kullanıcı adıveya şifre yanlış");
                 }
             }
 
 
-            return View();
+            return View(model);
+        }
+
+
+        public IActionResult Profile(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return NotFound();
+            }
+            var user = _userRepository.Users.Include(x => x.Posts)
+                                           .Include(x => x.Comments)
+                                           .ThenInclude(x => x.Post)
+                                           .FirstOrDefault(x => x.UserName == username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
     }
 }
