@@ -29,7 +29,7 @@ namespace BlogApp.Controllers
                 var claims=User.Claims;
                 
 
-            var posts = _postRepository.Posts;
+            var posts = _postRepository.Posts.Where(i=>i.IsActive);
             if (!string.IsNullOrEmpty(tagName))
             {
                 posts = posts.Where(x => x.Tags.Any(t => t.Url == tagName));
@@ -112,6 +112,52 @@ namespace BlogApp.Controllers
                 posts=posts.Where(i=>i.UserId==userId);
             }
             return View(await posts.ToListAsync());
+        }
+           [Authorize]
+        public IActionResult Edit(int? id)
+        {
+            if(id==null)
+            {
+                return NotFound();
+            }
+            var post=_postRepository.Posts.FirstOrDefault(i=>i.PostId==id);
+            if(post==null)
+            {
+                return NotFound();
+            }
+            return View(new PostEditViewModel{
+                PostId=post.PostId,
+                Title=post.Title,
+                Description=post.Description,
+                Content=post.Content,
+                Url=post.Url,
+                IsActive=post.IsActive
+            });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Edit(PostEditViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var entityToUpdate=new Post{
+                    PostId=model.PostId,
+                    Title=model.Title,
+                    Description=model.Description,
+                    Content=model.Content,
+                    Url=model.Url
+                };
+
+                if(User.FindFirstValue(ClaimTypes.Role)=="admin")
+                {
+                    entityToUpdate.IsActive=model.IsActive;
+                }
+
+                _postRepository.EditPost(entityToUpdate);
+                return RedirectToAction("List");
+            }
+            return View(model);
         }
     }
 }
