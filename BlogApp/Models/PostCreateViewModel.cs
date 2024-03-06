@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
+
 namespace BlogApp.Models
 {
     public class PostCreateViewModel
@@ -20,5 +21,7 @@ namespace BlogApp.Models
                [Required]
             [Display(Name ="Url")]
         public string? Url { get; set; }
+
+      
     }
 }
