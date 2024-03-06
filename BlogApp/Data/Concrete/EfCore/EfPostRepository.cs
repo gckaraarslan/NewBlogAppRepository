@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BlogApp.Data.Abstract;
 using BlogApp.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.Data.Concrete.EfCore
 {
@@ -37,6 +38,24 @@ namespace BlogApp.Data.Concrete.EfCore
 
             }
             
+        }
+
+        public void EditPost(Post post, int[] tagIds)
+        {
+          var entity=_context.Posts.Include(i=>i.Tags).FirstOrDefault(i=>i.PostId==post.PostId);
+
+            if(entity !=null)
+            {
+                entity.Title=post.Title;
+                entity.Description=post.Description;
+                entity.Content=post.Content;
+                entity.Url=post.Url;
+                entity.IsActive=post.IsActive;
+
+                entity.Tags=_context.Tags.Where(tag=>tagIds.Contains(tag.TagId)).ToList();
+                _context.SaveChanges();
+
+            }
         }
     }
 }
